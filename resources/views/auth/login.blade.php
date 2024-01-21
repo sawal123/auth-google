@@ -17,7 +17,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary my-2 w-100">Login</button>
                 <a href="{{ route('register') }}" class="btn btn-secondary my-2 w-100" >Register</a>
-                <a href="{{ url('auth/google') }}" class="btn btn-danger my-2 w-100" >Login With Google</a>
+                <a href="{{ url('auth/google') }}" class="btn btn-danger my-2 w-100" ><i class="fa-brands fa-google"></i> Login With Google</a>
             </form>
         </div>
     </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ShortController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -28,11 +29,13 @@ Route::post('auth-login', [AuthController::class, 'authLogin'])->name('auth.logi
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
-
+Route::get('/', [Controller::class, 'index'])->name('index');
 Route::middleware(['auth'])->group(function () {
     // Rute yang perlu dilindungi
-    Route::get('/', [Controller::class, 'index'])->name('index');
+    
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('create-short', [ShortController::class, 'short'])->name('create.short');
+    Route::get('/{data}', [ShortController::class , 'cek'])->name('cek');
 });
 
 

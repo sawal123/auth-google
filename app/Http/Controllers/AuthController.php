@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -37,19 +38,17 @@ class AuthController extends Controller
         $validate->validate();
 
         $user= User::create([
+            "uid"=> Str::uuid(),
             "name" => $request->nama,
             "email" => $request->email,
             "password" => bcrypt($request->password),
         ]);
-        return redirect(route('login'))->with('success', 'Register Berhasil');
+        Auth::login($user);
+        return redirect(route('index'));
     }
 
     public function authLogin(Request $request){
-        //validasi data yang dikirim
-        // $credentials = $this->validate($request, [
-        //     'email'=>'required|email:dns',
-        //     'password'=> 'required|string'
-        // ]);
+       
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)){
@@ -62,6 +61,6 @@ class AuthController extends Controller
     }
     public function logout(){
         Auth::logout();
-        return redirect(route('register'));
+        return redirect(route('login'));
     }
 }

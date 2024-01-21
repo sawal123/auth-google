@@ -27,6 +27,7 @@ Route::post('create', [AuthController::class, 'create'])->name('auth.create');
 Route::post('auth-login', [AuthController::class, 'authLogin'])->name('auth.login');
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::middleware(['auth'])->group(function () {
     // Rute yang perlu dilindungi

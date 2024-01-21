@@ -19,7 +19,8 @@
                     <input type="password" class="form-control" name="password" id="formGroupExampleInput2"
                         placeholder="Masukan password...">
                 </div>
-                <button type="submit" class="btn btn-secondary my-2 w-100">Register</button>
+                <button type="submit" class="btn btn-primary my-2 w-100">Register</button>
+                <a href="{{ url('auth/google') }}" class="btn btn-danger my-2 w-100" >Register With Google</a>
                 <p class="text-center">Sudah punya akun? <a href="{{route('login')}}">Login</a></p>
             </form>
         </div>

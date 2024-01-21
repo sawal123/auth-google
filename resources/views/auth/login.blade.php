@@ -2,6 +2,7 @@
 @section('content')
     <div class="container align-items-center d-flex" style="height: 720px !important">
         <div class="card p-5 lg-w-25 m-auto ">
+            <h3 class="text-center mb-3">Login Web App</h3>
             <form action="{{route('auth.login')}}" method="post">
                 @csrf
                 <div class="mb-3">
